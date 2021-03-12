@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, GridItem, Input } from '@chakra-ui/react';
+import { GridItem, Input } from '@chakra-ui/react';
 const AddressForm = ({ formField }) => {
     const {
         firstName,
@@ -14,16 +14,14 @@ const AddressForm = ({ formField }) => {
         // useAddressForPaymentDetails
     } = formField;
     return (
-        <Grid templateColumns='repeat(2, 1fr)' gap={2}>
-            <GridItem colSpan={1}>
+        <>
+            <GridItem colSpan={2}>
                 <Input
                     size='sm'
                     name={firstName.name}
                     m='2'
                     variant='outline'
                     placeholder={firstName.label}></Input>
-            </GridItem>
-            <GridItem colSpan={1}>
                 <Input
                     size='sm'
                     name={lastName.name}
@@ -31,6 +29,7 @@ const AddressForm = ({ formField }) => {
                     variant='outline'
                     placeholder={lastName.label}></Input>
             </GridItem>
+
             <GridItem colSpan={1}>
                 <Input
                     size='sm'
@@ -61,7 +60,7 @@ const AddressForm = ({ formField }) => {
                     variant='filled'
                     placeholder={address2.label}></Input>
             </GridItem>
-            <GridItem colSpan={1}>
+            <GridItem colSpan={2}>
                 <Input
                     size='sm'
                     name={city.name}
@@ -69,7 +68,7 @@ const AddressForm = ({ formField }) => {
                     variant='outline'
                     placeholder={city.label}></Input>
             </GridItem>
-            <GridItem colSpan={1}>
+            <GridItem colSpan={2}>
                 <Input
                     size='sm'
                     name={state.name}
@@ -77,7 +76,7 @@ const AddressForm = ({ formField }) => {
                     variant='outline'
                     placeholder={state.label}></Input>
             </GridItem>
-        </Grid>
+        </>
     );
 };
 

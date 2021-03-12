@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Heading, Flex, Button } from '@chakra-ui/react';
+import { Grid, Box, Heading, Button, Center, GridItem } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import Stepper from 'react-stepper-horizontal';
 import inititalValue from '../../components/Model/formInitialValue';
@@ -48,9 +48,10 @@ const CheckoutForm = () => {
 
     const _renderListButton = (isSubmitting) => {
         return (
-            <Box justifyContent='flex-end' d='flex' mt='5'>
+            <GridItem>
                 {activeStep !== 0 && (
                     <Button
+                        ml='2'
                         size='sm'
                         colorScheme='teal'
                         variant='outline'
@@ -62,14 +63,14 @@ const CheckoutForm = () => {
 
                 <Button
                     size='sm'
-                    ml='4'
+                    ml='2'
                     colorScheme='telegram'
                     variant='outline'
                     disabled={isSubmitting}
                     type='submit'>
                     {isLastStep ? 'Place Order' : 'Next'}
                 </Button>
-            </Box>
+            </GridItem>
         );
     };
 
@@ -99,19 +100,18 @@ const CheckoutForm = () => {
     };
 
     return (
-        <Flex
-            w='100%'
-            h='100%'
-            minH='600px'
-            flexWrap='wrap'
-            justifyContent='center'
-            boxShadow='1px 1px 1px 1px lightgray'>
-            <Heading p='5' color='teal.700'>
-                Checkout
-            </Heading>
+        <Grid w='100%' h='100%'>
+            <GridItem>
+                <Center>
+                    <Heading p='5' color='teal.700'>
+                        Checkout
+                    </Heading>
+                </Center>
+            </GridItem>
 
-            <Stepper activeColor='#57fa' steps={steps} activeStep={activeStep} />
-
+            <GridItem>
+                <Stepper activeColor='#a77' steps={steps} activeStep={activeStep} />
+            </GridItem>
             <>
                 {activeStep === steps.length ? (
                     <CheckoutSuccess />
@@ -122,23 +122,23 @@ const CheckoutForm = () => {
                         onSubmit={_handleSubmit}>
                         {({ isSubmitting }) => (
                             <Form id={formId}>
-                                <Flex
+                                <Grid
+                                    gap='4'
                                     p='5'
                                     m='5'
-                                    flexWrap='wrap'
                                     justifyContent='center'
                                     flexFlow='column'
                                     className='form-area'>
                                     {_renderStepContent(activeStep)}
 
                                     {_renderListButton(isSubmitting)}
-                                </Flex>
+                                </Grid>
                             </Form>
                         )}
                     </Formik>
                 )}
             </>
-        </Flex>
+        </Grid>
     );
 };
 
