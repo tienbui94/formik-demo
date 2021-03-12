@@ -4,29 +4,67 @@ import { Formik, Form } from 'formik';
 import Stepper from 'react-stepper-horizontal';
 import inititalValue from '../../components/Model/formInitialValue';
 
+//validate form
+import validateSchema from '../../components/validationSchema/validationSchema';
+
 //step form
 import AddressForm from './components/AddressForm';
 import CheckoutSuccess from './components/CheckoutSuccess';
 import PaymentForm from './components/PaymentForm';
 import ReviewOrder from './components/ReviewOrder';
 
+import FormModel from '../../components/Model/formModel';
+
 const CheckoutForm = () => {
     const steps = [{ title: 'First' }, { title: 'Second' }, { title: 'Third' }];
     const [activeStep, setActiveStep] = useState(0);
+    const { formId, formField } = FormModel;
+    const isLastStep = activeStep === steps.length - 1;
+    console.log(
+        {
+            activeStep
+        },
+        steps.length,
+        isLastStep
+    );
 
-    const isLastStep = (activeStep) => steps.length - 1;
-
+    console.log({ formId, formField });
     const _renderStepContent = (step) => {
         switch (step) {
             case 0:
-                return <AddressForm formField='formField' />;
+                return <AddressForm formField={formField} />;
             case 1:
-                return <PaymentForm formField='formField' />;
+                return <PaymentForm formField={formField} />;
             case 2:
-                return <ReviewOrder formField='formField' />;
+                return <ReviewOrder formField={formField} />;
             default:
                 return <div>404</div>;
         }
+    };
+
+    const _renderListButton = (isSubmitting) => {
+        return (
+            <Box justifyContent='flex-end' d='flex' mt='5'>
+                {activeStep !== 0 && (
+                    <Button
+                        colorScheme='teal'
+                        variant='outline'
+                        onClick={_handleBack}
+                        className='btn-back'>
+                        Back
+                    </Button>
+                )}
+
+                <Button
+                    ml='4'
+                    colorScheme='telegram'
+                    variant='outline'
+                    disabled={isSubmitting}
+                    type='submit'>
+                    {isLastStep ? 'Place Order' : 'Next'}
+                </Button>
+            </Box>
+        );
     };
 
     const _handleBack = () => {
@@ -55,47 +93,44 @@ const CheckoutForm = () => {
     };
 
     return (
-        <Box w='100%' height='50%' maxW='100%' d='flex' justifyContent='center' p='10' m='5'>
-            <Flex
-                w='100%'
-                h='100%'
-                minH='200px'
-                flexWrap='wrap'
-                justifyContent='center'
-                boxShadow='1px 1px 1px 1px lightgray'>
-                <Heading>Checkout</Heading>
+        <Flex
+            w='100%'
+            h='100%'
+            minH='200px'
+            flexWrap='wrap'
+            justifyContent='center'
+            boxShadow='1px 1px 1px 1px lightgray'>
+            <Heading>Checkout</Heading>
 
-                <Stepper steps={steps} activeStep={activeStep} />
+            <Stepper steps={steps} activeStep={activeStep} />
 
-                <>
-                    {activeStep === steps.length ? (
-                        <CheckoutSuccess />
-                    ) : (
-                        <Formik initialValues={inititalValue} onSubmit={_handleSubmit}>
-                            {({ isSubmitting }) => (
-                                <Form id='formExample'>
+            <>
+                {activeStep === steps.length ? (
+                    <CheckoutSuccess />
+                ) : (
+                    <Formik
+                        validationSchema={validateSchema}
+                        initialValues={inititalValue}
+                        onSubmit={_handleSubmit}>
+                        {({ isSubmitting }) => (
+                            <Form id={formId}>
+                                <Flex
+                                    p='5'
+                                    m='5'
+                                    flexWrap='wrap'
+                                    justifyContent='center'
+                                    flexFlow='column'
+                                    className='form-area'>
                                     {_renderStepContent(activeStep)}
-                                    {activeStep !== 0 && (
-                                        <div className='function-button'>
-                                            <Button onClick={_handleBack} className='btn-back' />
-                                        </div>
-                                    )}
-                                    <div className='function-button'>
-                                        <Button
-                                            colorScheme='telegram'
-                                            variant='outline'
-                                            disabled={isSubmitting}
-                                            type='submit'>
-                                            {isLastStep ? 'Place Order' : 'Next'}
-                                        </Button>
-                                    </div>
-                                </Form>
-                            )}
-                        </Formik>
-                    )}
-                </>
-            </Flex>
-        </Box>
+
+                                    {_renderListButton(isSubmitting)}
+                                </Flex>
+                            </Form>
+                        )}
+                    </Formik>
+                )}
+            </>
+        </Flex>
     );
 };
 

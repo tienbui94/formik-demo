@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CheckoutSuccess = () => {
+const CheckoutSuccess = ({ formField }) => {
     return <div>CheckoutSuccess</div>;
 };
 
