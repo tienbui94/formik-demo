@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
 
 import { ColorModeScript } from '@chakra-ui/react';
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, ChakraProvider } from '@chakra-ui/react';
 
 const theme = extendTheme({
     //customize theme color

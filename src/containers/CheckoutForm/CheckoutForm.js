@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Box, Heading, Button, Center, GridItem } from '@chakra-ui/react';
+import { Grid, Heading, Button, Center, GridItem } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import Stepper from 'react-stepper-horizontal';
 import inititalValue from '../../components/Model/formInitialValue';
@@ -24,15 +24,7 @@ const CheckoutForm = () => {
     const [activeStep, setActiveStep] = useState(0);
     const { formId, formField } = FormModel;
     const isLastStep = activeStep === steps.length - 1;
-    console.log(
-        {
-            activeStep
-        },
-        steps.length,
-        isLastStep
-    );
 
-    console.log({ formId, formField });
     const _renderStepContent = (step) => {
         switch (step) {
             case 0:

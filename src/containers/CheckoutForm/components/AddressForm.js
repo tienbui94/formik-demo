@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { GridItem, Input } from '@chakra-ui/react';
+import { GridItem } from '@chakra-ui/react';
+import InputField from './InputField';
 const AddressForm = ({ formField }) => {
     const {
         firstName,
@@ -13,68 +14,29 @@ const AddressForm = ({ formField }) => {
         country
         // useAddressForPaymentDetails
     } = formField;
+
     return (
         <>
             <GridItem colSpan={2}>
-                <Input
-                    size='sm'
-                    name={firstName.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={firstName.label}></Input>
-                <Input
-                    size='sm'
-                    name={lastName.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={lastName.label}></Input>
+                <InputField name={firstName.name} variant='outline' placeholder={firstName.label} />
+                <InputField name={lastName.name} variant='outline' placeholder={lastName.label} />
             </GridItem>
 
             <GridItem colSpan={1}>
-                <Input
-                    size='sm'
-                    name={zipcode.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={zipcode.label}></Input>
+                <InputField name={zipcode.name} variant='outline' placeholder={zipcode.label} />
             </GridItem>
             <GridItem colSpan={1}>
-                <Input
-                    size='sm'
-                    name={country.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={country.label}></Input>
+                <InputField name={country.name} variant='outline' placeholder={country.label} />
             </GridItem>
             <GridItem colSpan={2}>
-                <Input
-                    size='sm'
-                    name={address1.name}
-                    m='2'
-                    variant='filled'
-                    placeholder={address1.label}></Input>
-                <Input
-                    size='sm'
-                    name={address2.name}
-                    m='2'
-                    variant='filled'
-                    placeholder={address2.label}></Input>
+                <InputField name={address1.name} variant='filled' placeholder={address1.label} />
+                <InputField name={address2.name} variant='filled' placeholder={address2.label} />
             </GridItem>
             <GridItem colSpan={2}>
-                <Input
-                    size='sm'
-                    name={city.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={city.label}></Input>
+                <InputField name={city.name} variant='outline' placeholder={city.label} />
             </GridItem>
             <GridItem colSpan={2}>
-                <Input
-                    size='sm'
-                    name={state.name}
-                    m='2'
-                    variant='outline'
-                    placeholder={state.label}></Input>
+                <InputField name={state.name} variant='outline' placeholder={state.label} />
             </GridItem>
         </>
     );
