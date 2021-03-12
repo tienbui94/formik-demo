@@ -47,9 +47,9 @@ const validateSchema = [
                     if (moment(val, moment.ISO_8601).isValid()) {
                         return moment(val).isBetween(startDate, endDate);
                     }
-                    return false;
+                    return true;
                 }
-                return false;
+                return true;
             }),
         [cvv.name]: Yup.string()
             .required(`${cvv.requiredErrorMsg}`)

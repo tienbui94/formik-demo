@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Grid, Heading, Button, Center, Box } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import Stepper from 'react-stepper-horizontal';
-import inititalValue from '../../components/Model/formInitialValue';
+import inititalValue from '../../../components/Model/formInitialValue';
 
 //validate form
-import validateSchema from '../../components/validationSchema/validationSchema';
+import validateSchema from '../../../components/validationSchema/validationSchema';
 
 //step form
 import AddressForm from './components/AddressForm';
@@ -13,7 +13,7 @@ import CheckoutSuccess from './components/CheckoutSuccess';
 import PaymentForm from './components/PaymentForm';
 import ReviewOrder from './components/ReviewOrder';
 
-import FormModel from '../../components/Model/formModel';
+import FormModel from '../../../components/Model/formModel';
 
 const CheckoutForm = () => {
     const steps = [
