@@ -16,7 +16,11 @@ import ReviewOrder from './components/ReviewOrder';
 import FormModel from '../../components/Model/formModel';
 
 const CheckoutForm = () => {
-    const steps = [{ title: 'First' }, { title: 'Second' }, { title: 'Third' }];
+    const steps = [
+        { title: 'Shipping address' },
+        { title: 'Payment details' },
+        { title: 'Review your order' }
+    ];
     const [activeStep, setActiveStep] = useState(0);
     const { formId, formField } = FormModel;
     const isLastStep = activeStep === steps.length - 1;
@@ -47,6 +51,7 @@ const CheckoutForm = () => {
             <Box justifyContent='flex-end' d='flex' mt='5'>
                 {activeStep !== 0 && (
                     <Button
+                        size='sm'
                         colorScheme='teal'
                         variant='outline'
                         onClick={_handleBack}
@@ -56,6 +61,7 @@ const CheckoutForm = () => {
                 )}
 
                 <Button
+                    size='sm'
                     ml='4'
                     colorScheme='telegram'
                     variant='outline'
@@ -96,13 +102,15 @@ const CheckoutForm = () => {
         <Flex
             w='100%'
             h='100%'
-            minH='200px'
+            minH='600px'
             flexWrap='wrap'
             justifyContent='center'
             boxShadow='1px 1px 1px 1px lightgray'>
-            <Heading>Checkout</Heading>
+            <Heading p='5' color='teal.700'>
+                Checkout
+            </Heading>
 
-            <Stepper steps={steps} activeStep={activeStep} />
+            <Stepper activeColor='#57fa' steps={steps} activeStep={activeStep} />
 
             <>
                 {activeStep === steps.length ? (
