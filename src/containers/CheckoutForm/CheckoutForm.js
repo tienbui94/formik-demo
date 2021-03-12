@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Heading, Button, Center, GridItem } from '@chakra-ui/react';
+import { Grid, Heading, Button, Center, Box } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import Stepper from 'react-stepper-horizontal';
 import inititalValue from '../../components/Model/formInitialValue';
@@ -25,6 +25,8 @@ const CheckoutForm = () => {
     const { formId, formField } = FormModel;
     const isLastStep = activeStep === steps.length - 1;
 
+    const currentValidateSchema = validateSchema[activeStep];
+
     const _renderStepContent = (step) => {
         switch (step) {
             case 0:
@@ -40,7 +42,7 @@ const CheckoutForm = () => {
 
     const _renderListButton = (isSubmitting) => {
         return (
-            <GridItem>
+            <Box as='div'>
                 {activeStep !== 0 && (
                     <Button
                         ml='2'
@@ -62,7 +64,7 @@ const CheckoutForm = () => {
                     type='submit'>
                     {isLastStep ? 'Place Order' : 'Next'}
                 </Button>
-            </GridItem>
+            </Box>
         );
     };
 
@@ -92,45 +94,48 @@ const CheckoutForm = () => {
     };
 
     return (
-        <Grid w='100%' h='100%'>
-            <GridItem>
-                <Center>
-                    <Heading p='5' color='teal.700'>
-                        Checkout
-                    </Heading>
-                </Center>
-            </GridItem>
+        <Box>
+            <Grid w='100%' h='100%'>
+                <Box as='div'>
+                    <Center>
+                        <Heading p='5' color='teal.700'>
+                            Checkout
+                        </Heading>
+                    </Center>
+                </Box>
 
-            <GridItem>
-                <Stepper activeColor='#a77' steps={steps} activeStep={activeStep} />
-            </GridItem>
-            <>
-                {activeStep === steps.length ? (
-                    <CheckoutSuccess />
-                ) : (
-                    <Formik
-                        validationSchema={validateSchema}
-                        initialValues={inititalValue}
-                        onSubmit={_handleSubmit}>
-                        {({ isSubmitting }) => (
-                            <Form id={formId}>
-                                <Grid
-                                    gap='4'
-                                    p='5'
-                                    m='5'
-                                    justifyContent='center'
-                                    flexFlow='column'
-                                    className='form-area'>
-                                    {_renderStepContent(activeStep)}
+                <Box as='div'>
+                    <Stepper
+                        completeColor='#07f2b8'
+                        completeTitleColor='#07f2b8'
+                        activeTitleColor='#e8b50c'
+                        activeColor='#e8b50c'
+                        steps={steps}
+                        activeStep={activeStep}
+                    />
+                </Box>
+                <>
+                    {activeStep === steps.length ? (
+                        <CheckoutSuccess />
+                    ) : (
+                        <Formik
+                            validationSchema={currentValidateSchema}
+                            initialValues={inititalValue}
+                            onSubmit={_handleSubmit}>
+                            {({ isSubmitting }) => (
+                                <Form id={formId}>
+                                    <Box p='5' m='5' className='form-area'>
+                                        {_renderStepContent(activeStep)}
 
-                                    {_renderListButton(isSubmitting)}
-                                </Grid>
-                            </Form>
-                        )}
-                    </Formik>
-                )}
-            </>
-        </Grid>
+                                        {_renderListButton(isSubmitting)}
+                                    </Box>
+                                </Form>
+                            )}
+                        </Formik>
+                    )}
+                </>
+            </Grid>
+        </Box>
     );
 };
 

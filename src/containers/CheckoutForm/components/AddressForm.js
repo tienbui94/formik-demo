@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GridItem } from '@chakra-ui/react';
+import { Box, GridItem } from '@chakra-ui/react';
 import InputField from './InputField';
 const AddressForm = ({ formField }) => {
     const {
@@ -16,7 +16,7 @@ const AddressForm = ({ formField }) => {
     } = formField;
 
     return (
-        <>
+        <Box>
             <GridItem colSpan={2}>
                 <InputField name={firstName.name} variant='outline' placeholder={firstName.label} />
                 <InputField name={lastName.name} variant='outline' placeholder={lastName.label} />
@@ -38,7 +38,7 @@ const AddressForm = ({ formField }) => {
             <GridItem colSpan={2}>
                 <InputField name={state.name} variant='outline' placeholder={state.label} />
             </GridItem>
-        </>
+        </Box>
     );
 };
 
