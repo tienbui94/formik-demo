@@ -1,10 +1,13 @@
 import './styles/App.css';
 import Layout from './layout/layout';
-import CheckoutForm from './containers/CheckoutForm/StepperForm/CheckoutForm';
+import routes from './routes';
+import { Route } from 'react-router-dom';
 function App() {
     return (
         <Layout>
-            <CheckoutForm />
+            {routes.map((route, index) => (
+                <Route key={index} path={route.path} component={route.component} exact />
+            ))}
         </Layout>
     );
 }

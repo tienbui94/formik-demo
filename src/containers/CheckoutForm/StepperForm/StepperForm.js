@@ -15,7 +15,7 @@ import ReviewOrder from './components/ReviewOrder';
 
 import FormModel from '../../../components/Model/formModel';
 
-const CheckoutForm = () => {
+const StepperForm = () => {
     const steps = [
         { title: 'Shipping address' },
         { title: 'Payment details' },
@@ -139,4 +139,4 @@ const CheckoutForm = () => {
     );
 };
 
-export default CheckoutForm;
+export default StepperForm;
