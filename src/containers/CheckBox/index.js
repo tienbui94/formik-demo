@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Grid, Box, Container, Heading, Stack } from '@chakra-ui/react';
 const CheckBox = () => {
+    const titleRef = useRef();
+
+    useEffect(() => {
+        setTimeout(() => {
+            titleRef.current.textContent = 'Beautiful Mistake';
+        }, 2000);
+    }, []);
+
     return (
         <Grid
             minH='100vh'
@@ -25,6 +33,7 @@ const CheckBox = () => {
                 </Stack>
             </Box>
             <Container
+                ref={titleRef}
                 d='flex'
                 justifyContent='center'
                 gridArea='sidebar'
@@ -34,6 +43,7 @@ const CheckBox = () => {
                 <div>Sidebar</div>
             </Container>
             <Box
+                alignItems='center'
                 d='flex'
                 minH='500px'
                 justifyContent='center'
