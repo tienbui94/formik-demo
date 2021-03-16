@@ -6,7 +6,6 @@ const InputField = (props) => {
     const { variant, ...rest } = props;
     const [field, meta] = useField(props);
 
-    console.log(meta, 'meta');
     function _renderErrorText() {
         const [touched, error] = at(meta, 'touched', 'error');
 

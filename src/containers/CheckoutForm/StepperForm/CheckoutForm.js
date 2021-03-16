@@ -42,7 +42,7 @@ const CheckoutForm = () => {
 
     const _renderListButton = (isSubmitting) => {
         return (
-            <Box as='div'>
+            <Grid gridTemplateColumns='15% 15%'>
                 {activeStep !== 0 && (
                     <Button
                         ml='2'
@@ -64,7 +64,7 @@ const CheckoutForm = () => {
                     type='submit'>
                     {isLastStep ? 'Place Order' : 'Next'}
                 </Button>
-            </Box>
+            </Grid>
         );
     };
 

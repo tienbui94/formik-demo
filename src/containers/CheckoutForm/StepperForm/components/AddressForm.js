@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import InputField from './InputField';
 const AddressForm = ({ formField }) => {
     const {
@@ -16,29 +16,18 @@ const AddressForm = ({ formField }) => {
     } = formField;
 
     return (
-        <Box>
-            <GridItem colSpan={2}>
+        <Grid m='0 auto' className='grid-form-user-information'>
+            <GridItem>
                 <InputField name={firstName.name} variant='outline' placeholder={firstName.label} />
                 <InputField name={lastName.name} variant='outline' placeholder={lastName.label} />
-            </GridItem>
-
-            <GridItem colSpan={1}>
                 <InputField name={zipcode.name} variant='outline' placeholder={zipcode.label} />
-            </GridItem>
-            <GridItem colSpan={1}>
                 <InputField name={country.name} variant='outline' placeholder={country.label} />
-            </GridItem>
-            <GridItem colSpan={2}>
                 <InputField name={address1.name} variant='filled' placeholder={address1.label} />
                 <InputField name={address2.name} variant='filled' placeholder={address2.label} />
-            </GridItem>
-            <GridItem colSpan={2}>
                 <InputField name={city.name} variant='outline' placeholder={city.label} />
-            </GridItem>
-            <GridItem colSpan={2}>
                 <InputField name={state.name} variant='outline' placeholder={state.label} />
             </GridItem>
-        </Box>
+        </Grid>
     );
 };
 
