@@ -7,7 +7,9 @@ const Layout = ({ children }) => {
     return (
         <>
             <Header />
-            <Container maxW='container.lg'>{children}</Container>
+            <Container minH='100vh' id='container-layout' maxW='container.lg'>
+                {children}
+            </Container>
             <Footer />
         </>
     );

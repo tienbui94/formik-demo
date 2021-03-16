@@ -1,7 +1,63 @@
 import React from 'react';
-
+import { Grid, Box, Container, Heading, Stack } from '@chakra-ui/react';
 const CheckBox = () => {
-    return <div>CheckBox</div>;
+    return (
+        <Grid
+            minH='100vh'
+            gridTemplateAreas='"header header header header" "sidebar main main main" "footer footer footer footer"'
+            gridTemplateColumns='repeat(4, 1fr)'
+            gridTemplateRows='auto'
+            gap={4}>
+            <Box
+                alignItems='center'
+                d='flex'
+                justifyContent='center'
+                gridArea='header'
+                as='div'
+                backgroundColor='teal.500'>
+                <Stack spacing={4}>
+                    <Heading as='h2' size='xl'>
+                        BUI QUANG TIEN
+                    </Heading>
+                    <Heading as='h4' size='sm'>
+                        VLOG
+                    </Heading>
+                </Stack>
+            </Box>
+            <Container
+                d='flex'
+                justifyContent='center'
+                gridArea='sidebar'
+                backgroundColor='teal.500'
+                as='div'
+                alignItems='center'>
+                <div>Sidebar</div>
+            </Container>
+            <Container
+                d='flex'
+                minH='500px'
+                justifyContent='center'
+                gridArea='main'
+                backgroundColor='teal.500'
+                as='div'>
+                Content
+            </Container>
+            <Box
+                alignItems='center'
+                minH='100'
+                position='static'
+                bottom='0'
+                left='4'
+                right='4'
+                d='flex'
+                justifyContent='center'
+                gridArea='footer'
+                backgroundColor='teal.500'
+                as='div'>
+                Copyright &#8471; by Tien Bui
+            </Box>
+        </Grid>
+    );
 };
 
 export default CheckBox;
