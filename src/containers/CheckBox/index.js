@@ -4,10 +4,10 @@ const CheckBox = () => {
     return (
         <Grid
             minH='100vh'
-            gridTemplateAreas='"header header header header" "sidebar main main main" "footer footer footer footer"'
+            gridTemplateAreas='"header header header header" "sidebar main main main " "footer footer footer footer"'
             gridTemplateColumns='repeat(4, 1fr)'
             gridTemplateRows='auto'
-            gap={4}>
+            gap={2}>
             <Box
                 alignItems='center'
                 d='flex'
@@ -33,7 +33,7 @@ const CheckBox = () => {
                 alignItems='center'>
                 <div>Sidebar</div>
             </Container>
-            <Container
+            <Box
                 d='flex'
                 minH='500px'
                 justifyContent='center'
@@ -41,7 +41,7 @@ const CheckBox = () => {
                 backgroundColor='teal.500'
                 as='div'>
                 Content
-            </Container>
+            </Box>
             <Box
                 alignItems='center'
                 minH='100'
