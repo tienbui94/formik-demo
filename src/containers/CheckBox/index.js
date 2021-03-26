@@ -25,7 +25,7 @@ const CheckBox = () => {
                 backgroundColor='teal.500'>
                 <Stack spacing={4}>
                     <Heading as='h2' size='xl'>
-                        BUI QUANG TIEN
+                        BUI QUANG TU
                     </Heading>
                     <Heading as='h4' size='sm'>
                         VLOG
